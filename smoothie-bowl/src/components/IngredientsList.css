@@ -1,0 +1,169 @@
+.ingredients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.ingredient-item {
+  position: relative;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  overflow: hidden;
+  min-height: 60px;
+}
+
+.ingredient-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.ingredient-item.expanded {
+  min-height: 200px;
+}
+
+.ingredient-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.checkbox-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ingredient-checkbox {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #cbd5e0;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.checkbox-label:hover {
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.ingredient-checkbox:checked + .checkbox-label {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+}
+
+.check-icon {
+  width: 16px;
+  height: 16px;
+  fill: white;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.2s ease;
+}
+
+.ingredient-checkbox:checked + .checkbox-label .check-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ingredient-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2d3748;
+  transition: all 0.3s ease;
+}
+
+.ingredient-image-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ingredient-item.expanded .ingredient-image-container {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ingredient-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ingredient-item.checked {
+  opacity: 0.7;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.ingredient-item.checked .ingredient-name {
+  text-decoration: line-through;
+  color: #718096;
+}
+
+.ingredient-item.checked.expanded {
+  min-height: 200px;
+}
+
+.ingredient-item.checked:hover {
+  transform: translateY(-1px);
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .ingredient-header {
+    padding: 14px 16px;
+  }
+
+  .ingredient-name {
+    font-size: 0.9rem;
+  }
+
+  .checkbox-label {
+    width: 20px;
+    height: 20px;
+  }
+
+  .check-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .ingredient-item.expanded {
+    min-height: 160px;
+  }
+
+  .ingredient-image-container {
+    height: 100px;
+  }
+}
